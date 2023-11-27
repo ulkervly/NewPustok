@@ -1,0 +1,98 @@
+﻿@model Book
+<div class="container-fluid"> 
+    <h1>Create:</h1>
+    <div class="row justify-content-center flex-column align-items-center">
+        <form class="col-md-8" asp-action="Create" method="post" >
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Code">Code</label>
+                    <input asp-for="Code" class="form-control" placeholder="Code">
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="Description">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="6" placeholder="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label for="inputAddress2">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div> *@
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Costprice">CostPrice</label>
+                    <input asp-for="Costprice" class="form-control" placeholder="CostPrice">
+                    <span asp-validation-for="Costprice" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Saleprice">Saleprice</label>
+                    <input asp-for="Saleprice" class="form-control" placeholder="SalePrice">
+                    <span asp-validation-for="Saleprice" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="DiscountPercent">Discount</label>
+                    <input asp-for="DiscountPercent" class="form-control" placeholder="Discount">
+                    <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Tax">Tax</label>
+                    <input asp-for="Tax" class="form-control" placeholder="Tax">
+                    <span asp-validation-for="Tax" class="text-danger"></span>
+                </div>
+                @* <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                </div> *@
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="AuthorId">Author</label>
+                    <select asp-for="AuthorId" class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        @foreach (var item in ViewBag.Authors)
+                        {
+                            <option value="@item.id">@item.FullName</option>
+                        }
+                       
+                    </select>
+                    <span asp-validation-for="AuthorId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="GenreId">Genre</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        @foreach (var item in ViewBag.Genre)
+                        {
+                            <option value="@item.id">@item.Name</option>
+                        }
+
+                    </select>
+                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="IsAvailable">
+                    <label class="form-check-label" asp-for="IsAvailable">
+                        Check  IsAvailable
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
